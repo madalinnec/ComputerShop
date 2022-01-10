@@ -30,32 +30,44 @@ public class Monitor {
         return price;
     }
 
+    public String toString(){
+        return "Monitor: " + name + ", "
+                            + resolution + ", "
+                            + price;
+    }
+
     public Monitor monitorOptions(){
         List<Monitor> monitors = new ArrayList<>();
         monitors.add(new Monitor("Samsung","4k",999.99));
         monitors.add(new Monitor("LG","Full HD",549.90));
         monitors.add(new Monitor("Horizon","HD",349.90));
         Monitor monitorChosen = new Monitor();
-        System.out.println("Please choose one of the options below: ");
+        System.out.println("Please choose one of the Monitors below: ");
         for (int i = 0; i < monitors.size(); i++) {
             System.out.println((i+1) + " - " + monitors.get(i).getName()
                                      + ", " + monitors.get(i).getResolution()
                                      + ", " + monitors.get(i).getPrice() + " RON");
         }
         Scanner sc = new Scanner(System.in);
-        int option = sc.nextInt();
-        switch (option) {
-            case 1:
-                monitorChosen = monitors.get(0);
-                break;
-            case 2:
-                monitorChosen = monitors.get(1);
-                break;
-            case 3:
-                monitorChosen = monitors.get(2);
-                break;
-            default:
-                System.out.println("No valid option was chosen.");
+        boolean tryAgain = false;
+        while(!tryAgain) {
+            int option = sc.nextInt();
+            switch (option) {
+                case 1:
+                    monitorChosen = monitors.get(0);
+                    tryAgain = true;
+                    break;
+                case 2:
+                    monitorChosen = monitors.get(1);
+                    tryAgain = true;
+                    break;
+                case 3:
+                    monitorChosen = monitors.get(2);
+                    tryAgain = true;
+                    break;
+                default:
+                    System.out.println("No valid option was chosen. Please choose again");
+            }
         }
         return monitorChosen;
     }

@@ -36,13 +36,20 @@ public class Gpu {
         return price;
     }
 
+    public String toString(){
+        return "GPU: " + name + ", "
+                        + memory + ", "
+                        + resolution + ", "
+                        + price;
+    }
+
     public Gpu gpuOptions(){
         List<Gpu> gpus = new ArrayList<>();
         gpus.add(new Gpu("Nvidia RTX 2060",6,"up to 1440p", 3499.90));
         gpus.add(new Gpu("Nvidia GTX 1660TI",6,"1080p",2699.90));
         gpus.add(new Gpu("Nvidia GTX 1060",6,"1080p",2499.90));
         Gpu gpuChosen = new Gpu();
-        System.out.println("Please choose one of the options below: ");
+        System.out.println("Please choose one of the GPUs below: ");
         for (int i = 0; i < gpus.size(); i++) {
             System.out.println((i+1) + " - " + gpus.get(i).getName()
                     + ", " + gpus.get(i).getResolution()
@@ -50,19 +57,25 @@ public class Gpu {
                     + ", " + gpus.get(i).getPrice() + " RON");
         }
         Scanner sc = new Scanner(System.in);
-        int option = sc.nextInt();
-        switch (option) {
-            case 1:
-                gpuChosen = gpus.get(0);
-                break;
-            case 2:
-                gpuChosen = gpus.get(1);
-                break;
-            case 3:
-                gpuChosen = gpus.get(2);
-                break;
-            default:
-                System.out.println("No valid option was chosen.");
+        boolean tryAgain = false;
+        while(!tryAgain) {
+            int option = sc.nextInt();
+            switch (option) {
+                case 1:
+                    gpuChosen = gpus.get(0);
+                    tryAgain = true;
+                    break;
+                case 2:
+                    gpuChosen = gpus.get(1);
+                    tryAgain = true;
+                    break;
+                case 3:
+                    gpuChosen = gpus.get(2);
+                    tryAgain = true;
+                    break;
+                default:
+                    System.out.println("No valid option was chosen. Please choose again");
+            }
         }
         return gpuChosen;
     }

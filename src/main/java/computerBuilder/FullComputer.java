@@ -1,9 +1,5 @@
 package computerBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class FullComputer {
     private String name;
     private double price;
@@ -25,6 +21,4 @@ public class FullComputer {
     public ComputerCase getComputerCase() {
         return computerCase;
     }
-
-
 }
