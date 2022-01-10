@@ -1,4 +1,4 @@
-package computerComponents;
+package computerBuilder;
 
 public class ComputerCase {
     private String name;

@@ -1,4 +1,4 @@
-package computerComponents;
+package computerBuilder;
 
 public class Motherboard {
     private String name;
